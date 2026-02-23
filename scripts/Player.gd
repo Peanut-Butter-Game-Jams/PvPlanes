@@ -15,7 +15,7 @@ var player_upgrades : Array[BaseUpgradeStrategy] = []
 @export var device_id: int = 0
 
 # Maximum total velocity of the player (units/s)
-@export var max_velocity: float = 512
+@export var max_velocity: float = 256
 
 # Maximum total turn speed (deg/s)
 @export var max_turn_speed: float = 90.0
@@ -77,8 +77,9 @@ func _ready() -> void:
 		add_child(sound_player)
 	
 	# Start Animations
-	$SpriteBoundingBox/LeftThrusterSprite.play("forward")
-	$SpriteBoundingBox/RightThrusterSprite.play("forward")
+	for child in $SpriteBoundingBox.get_children():
+		if child is AnimatedSprite2D:
+			child.play("forward")
 
 # applies player upgrades to the player
 func _process(delta: float) -> void:
@@ -223,3 +224,6 @@ func handle_screen_wrap() -> void:
 		position.y = 0
 	elif position.y <= -sprite_bounding_box.y:
 		position.y = screen_size.y
+
+func set_sprite(sprite : Texture2D) -> void:
+	$SpriteBoundingBox/BodySprite.texture = sprite

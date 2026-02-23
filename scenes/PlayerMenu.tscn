@@ -1,46 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://xo8c7pwbtbu6"]
+[gd_scene format=3 uid="uid://xo8c7pwbtbu6"]
 
 [ext_resource type="Script" uid="uid://dcngc8o2gvopb" path="res://scripts/player_menu.gd" id="1_sdn3m"]
-[ext_resource type="Texture2D" uid="uid://bj3ikbgirhn87" path="res://imgs/menu/BlueBackground.png" id="1_xf8rw"]
-[ext_resource type="Texture2D" uid="uid://db3gkm6xdh6nn" path="res://imgs/menu/BlueButton.png" id="2_sdn3m"]
-[ext_resource type="Texture2D" uid="uid://cx0p5ywt00afr" path="res://imgs/menu/GreenButton.png" id="3_rwwts"]
+[ext_resource type="Texture2D" uid="uid://brvt6h3ywbtxv" path="res://imgs/menu/Background.png" id="2_vptqc"]
+[ext_resource type="Texture2D" uid="uid://cpclqlxh0cvov" path="res://imgs/menu/player_1_button.png" id="3_vptqc"]
 [ext_resource type="Texture2D" uid="uid://4w8j1e84lhct" path="res://imgs/menu/readyCheckBox.png" id="4_cgbcs"]
-[ext_resource type="Texture2D" uid="uid://drul3cvlb450w" path="res://imgs/menu/PurpleButton.png" id="4_lb1ib"]
-[ext_resource type="Texture2D" uid="uid://c6xc1sskqvruq" path="res://imgs/menu/RedButton.png" id="5_cgbcs"]
 [ext_resource type="Texture2D" uid="uid://thn31soxq8ky" path="res://imgs/menu/checkmark.png" id="5_xox0g"]
+[ext_resource type="Texture2D" uid="uid://dygsl72ti1kbb" path="res://imgs/menu/player_2_button.png" id="6_230lr"]
+[ext_resource type="Texture2D" uid="uid://k82etuewofsa" path="res://imgs/menu/player_3_button.png" id="7_4kw2x"]
+[ext_resource type="Texture2D" uid="uid://bpr7es8l6w8is" path="res://imgs/menu/player_4_button.png" id="8_lo6sb"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_xox0g"]
-line_spacing = 0.0
-font_size = 60
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[node name="PlayerMenu" type="Node2D"]
+[node name="PlayerMenu" type="Node2D" unique_id=136068146]
 script = ExtResource("1_sdn3m")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=793059915]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_xf8rw")
+texture = ExtResource("2_vptqc")
 
-[node name="PlayerOne" type="Node2D" parent="."]
+[node name="PlayerOne" type="Node2D" parent="." unique_id=1689905298]
 
-[node name="PlayerOneButton" type="Sprite2D" parent="PlayerOne"]
-position = Vector2(162, 834)
-texture = ExtResource("2_sdn3m")
+[node name="PlayerOneButton" type="Sprite2D" parent="PlayerOne" unique_id=1774567964]
+position = Vector2(219, 891)
+texture = ExtResource("3_vptqc")
 
-[node name="PlayerOneLabel" type="Label" parent="PlayerOne"]
-anchors_preset = -1
-anchor_right = 0.021
-anchor_bottom = 0.021
-offset_left = 46.0
-offset_top = 915.0
-offset_right = 547.68
-offset_bottom = 1085.32
-text = "Player 1"
-label_settings = SubResource("LabelSettings_xox0g")
-
-[node name="CheckBoxOne" type="TextureRect" parent="PlayerOne"]
+[node name="CheckBoxOne" type="TextureRect" parent="PlayerOne" unique_id=1493157987]
 visible = false
 offset_left = 48.0
 offset_top = 808.0
@@ -49,7 +32,7 @@ offset_bottom = 928.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_cgbcs")
 
-[node name="CheckOne" type="TextureRect" parent="PlayerOne"]
+[node name="CheckOne" type="TextureRect" parent="PlayerOne" unique_id=1298769867]
 visible = false
 offset_left = 62.0
 offset_top = 737.0
@@ -58,25 +41,13 @@ offset_bottom = 915.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_xox0g")
 
-[node name="PlayerTwo" type="Node2D" parent="."]
+[node name="PlayerTwo" type="Node2D" parent="." unique_id=1958059880]
 
-[node name="PlayerTwoLabel" type="Label" parent="PlayerTwo"]
-anchors_preset = -1
-anchor_right = 0.021
-anchor_bottom = 0.021
-offset_left = 527.0
-offset_top = 915.0
-offset_right = 1028.68
-offset_bottom = 1085.32
-text = "Player 2
-"
-label_settings = SubResource("LabelSettings_xox0g")
+[node name="PlayerTwoButton" type="Sprite2D" parent="PlayerTwo" unique_id=667860006]
+position = Vector2(657, 890)
+texture = ExtResource("6_230lr")
 
-[node name="PlayerTwoButton" type="Sprite2D" parent="PlayerTwo"]
-position = Vector2(647, 838)
-texture = ExtResource("4_lb1ib")
-
-[node name="CheckBoxTwo" type="TextureRect" parent="PlayerTwo"]
+[node name="CheckBoxTwo" type="TextureRect" parent="PlayerTwo" unique_id=278920672]
 visible = false
 offset_left = 481.0
 offset_top = 808.0
@@ -85,7 +56,7 @@ offset_bottom = 928.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_cgbcs")
 
-[node name="CheckTwo" type="TextureRect" parent="PlayerTwo"]
+[node name="CheckTwo" type="TextureRect" parent="PlayerTwo" unique_id=1121490064]
 visible = false
 offset_left = 495.0
 offset_top = 737.0
@@ -94,25 +65,13 @@ offset_bottom = 915.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_xox0g")
 
-[node name="PlayerThree" type="Node2D" parent="."]
+[node name="PlayerThree" type="Node2D" parent="." unique_id=632961282]
 
-[node name="PlayerThreeLabel" type="Label" parent="PlayerThree"]
-anchors_preset = -1
-anchor_right = 0.021
-anchor_bottom = 0.021
-offset_left = 1010.0
-offset_top = 914.0
-offset_right = 1511.68
-offset_bottom = 1084.32
-text = "Player 3
-"
-label_settings = SubResource("LabelSettings_xox0g")
+[node name="PlayerThreeButton" type="Sprite2D" parent="PlayerThree" unique_id=1190106512]
+position = Vector2(1163, 890)
+texture = ExtResource("7_4kw2x")
 
-[node name="PlayerThreeButton" type="Sprite2D" parent="PlayerThree"]
-position = Vector2(1130, 832)
-texture = ExtResource("5_cgbcs")
-
-[node name="CheckBoxThree" type="TextureRect" parent="PlayerThree"]
+[node name="CheckBoxThree" type="TextureRect" parent="PlayerThree" unique_id=1281237407]
 visible = false
 offset_left = 987.0
 offset_top = 800.0
@@ -121,7 +80,7 @@ offset_bottom = 920.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_cgbcs")
 
-[node name="CheckThree" type="TextureRect" parent="PlayerThree"]
+[node name="CheckThree" type="TextureRect" parent="PlayerThree" unique_id=1154779988]
 visible = false
 offset_left = 1003.0
 offset_top = 721.0
@@ -130,25 +89,13 @@ offset_bottom = 899.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_xox0g")
 
-[node name="PlayerFour" type="Node2D" parent="."]
+[node name="PlayerFour" type="Node2D" parent="." unique_id=2019349074]
 
-[node name="PlayerFourLabel" type="Label" parent="PlayerFour"]
-anchors_preset = -1
-anchor_right = 0.021
-anchor_bottom = 0.021
-offset_left = 1535.0
-offset_top = 922.0
-offset_right = 2036.68
-offset_bottom = 1092.32
-text = "Player 4
-"
-label_settings = SubResource("LabelSettings_xox0g")
+[node name="PlayerFourButton" type="Sprite2D" parent="PlayerFour" unique_id=1140738772]
+position = Vector2(1712, 893)
+texture = ExtResource("8_lo6sb")
 
-[node name="PlayerFourButton" type="Sprite2D" parent="PlayerFour"]
-position = Vector2(1646, 832)
-texture = ExtResource("3_rwwts")
-
-[node name="CheckBoxFour" type="TextureRect" parent="PlayerFour"]
+[node name="CheckBoxFour" type="TextureRect" parent="PlayerFour" unique_id=1267396442]
 visible = false
 offset_left = 1529.0
 offset_top = 796.0
@@ -157,7 +104,7 @@ offset_bottom = 916.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_cgbcs")
 
-[node name="CheckFour" type="TextureRect" parent="PlayerFour"]
+[node name="CheckFour" type="TextureRect" parent="PlayerFour" unique_id=1346929082]
 visible = false
 offset_left = 1541.0
 offset_top = 721.0

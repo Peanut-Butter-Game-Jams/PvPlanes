@@ -30,7 +30,13 @@ func _on_start_button_mouse_entered() -> void:
 	selected_button = start_button
 	selected_button.grab_focus()
 
+func _on_start_button_mouse_exited() -> void:
+	selected_button.release_focus()
+	
 func _on_quit_button_mouse_entered() -> void:
 	selected_button.release_focus()
 	selected_button = quit_button
 	selected_button.grab_focus()
+	
+func _on_quit_button_mouse_exited() -> void:
+	selected_button.release_focus()
