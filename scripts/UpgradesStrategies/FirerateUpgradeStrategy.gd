@@ -6,7 +6,7 @@ extends BaseUpgradeStrategy
 func _ready() -> void:
 	isPlayerUpgrade = true;
 
-func apply_upgrade_to_player(player: Player):
+func apply_upgrade_to_player(player: CharacterBody2D):
 	player.fire_rate_modifier /= fire_rate_modifier
 	
 func apply_upgrade_to_projectile(bullet: Bullet):

@@ -1,5 +1,6 @@
 @tool
 extends Area2D
+class_name Upgrade
 
 @export var upgrade_label : Label
 @export var sprite : Sprite2D
@@ -23,8 +24,8 @@ func _process(delta: float) -> void:
 			upgrade_label.text = upgrade_strategy.upgrade_text
 			needs_update = false
 	
-func on_body_entered(body: PhysicsBody2D):
-	if body is Player:
+func on_body_entered(body: CharacterBody2D):
+	if body is CharacterBody2D:
 		if upgrade_strategy.isPlayerUpgrade:
 			body.player_upgrades.append(upgrade_strategy)
 		elif not upgrade_strategy.isPlayerUpgrade:

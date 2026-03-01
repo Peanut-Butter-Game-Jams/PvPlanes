@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch4ror07qtcih"]
+[gd_scene format=3 uid="uid://ch4ror07qtcih"]
 
 [ext_resource type="Script" uid="uid://djflllwa6vghn" path="res://scripts/GameScene.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://dh5x50r2quvdw" path="res://scenes/GameManger.tscn" id="8_vijgj"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=1511289795]
 script = ExtResource("1_xy3my")
 
-[node name="GameManger" parent="." instance=ExtResource("8_vijgj")]
+[node name="GameManger" parent="." unique_id=1666964729 instance=ExtResource("8_vijgj")]

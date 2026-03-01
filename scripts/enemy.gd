@@ -1,5 +1,4 @@
 extends CharacterBody2D
-class_name Player
 
 # Bullet scene
 @onready var bullet_scene: PackedScene = preload("res://scenes/Bullet.tscn")
@@ -25,7 +24,7 @@ var player_upgrades : Array[BaseUpgradeStrategy] = []
 @export var max_health: int = 100
 
 # Current health
-var current_health: int = max_health
+var current_health: int = 100
 
 # Current shield
 var current_shield: Node2D
@@ -41,24 +40,13 @@ var fire_rate_modifier: float = 1.0
 @onready var collision_cooldown_timer: Timer = Timer.new()
 
 # Booleans
-var can_collide: bool = false
-
-# Deadzone for joystick movement
-const DEADZONE = 0.2
-
+var can_collide: bool= false
+var current_target
 # Whether the action is pressed or not
 var action_states := {
 	"left": false,
 	"right": false,
 	"fire": false,
-}
-
-# Maps the actions to certain buttons
-# Joysticks are handled separately
-const ACTION_TO_BUTTON := {
-	"left": [KEY_LEFT],
-	"right": [KEY_RIGHT],
-	"fire": [KEY_SPACE, KEY_ENTER, JOY_BUTTON_B],
 }
 
 # Ready function
@@ -94,39 +82,26 @@ func _physics_process(delta: float) -> void:
 	handle_weapon_actions(delta)
 	if(current_health <= 0):
 		die()
+	if(current_target):
+		var angle_to_target_radians = atan2((current_target.global_position.y - global_position.y),(current_target.global_position.x - global_position.x))
+		var target_pos = current_target.global_position
+		var speed = 1.25 # Adjust for slowness
+		rotation = lerp_angle(rotation, angle_to_target_radians, speed * delta)
+
 
 func die() -> void:
 	#TODO: Play some sort of death animation
 	queue_free()
 
-# Gets the keycode of a joypad button or key agnostically as an int
-func get_keycode(event: InputEvent) -> int:
-	if event is InputEventKey:
-		return event.keycode
-	if event is InputEventJoypadButton:
-		return event.button_index
-	return -1
-
-func _input(event):
-	# Check only if the event is from the device we want
-	if event.device == device_id:
-		if event is InputEventKey or event is InputEventJoypadButton:
-			for action in action_states.keys():
-				var found: bool = false
-				for keycode in ACTION_TO_BUTTON[action]:
-					if get_keycode(event) == int(keycode):
-						found = true
-						break
-				if found:
-					action_states[action] = event.pressed
-		# Handle joystick axes
-		elif event is InputEventJoypadMotion:
-			if event.axis == JOY_AXIS_LEFT_X:
-				# Move left
-				action_states["left"] = event.axis_value < -DEADZONE
-				# Move right
-				action_states["right"] = event.axis_value > DEADZONE
-
+# Handles inputs that affect movement
+# and finalizes the position of the player 
+func handle_movement(delta: float) -> void:
+	# Calculate new velocity
+	velocity = Vector2.from_angle(rotation) * max_velocity
+	# Apply movement
+	move_and_collide(velocity * delta)	
+	handle_screen_wrap()
+	
 func handle_weapon_actions(delta: float) -> void:
 	# Fire Input
 	if action_states["fire"] and gun_cooldown_timer.is_stopped():
@@ -156,7 +131,7 @@ func add_shield() -> void:
 	if not current_shield:
 		current_shield = shield_scene.instantiate()
 		add_child(current_shield)
-		
+
 # Add health to the player, no more than max
 func add_health(health: int) -> void:
 	current_health = min(current_health + health, max_health)
@@ -172,26 +147,6 @@ func apply_damage(damage: int) -> void:
 	current_health = max(current_health - damage, 0)
 	print_debug(device_id, " health: ", current_health)
 
-# Handles inputs that affect movement
-# and finalizes the position of the player 
-func handle_movement(delta: float) -> void:
-	if action_states["left"]:
-		rotation_degrees -= max_turn_speed * delta
-	if action_states["right"]:
-		rotation_degrees += max_turn_speed * delta
-	
-	# Calculate new velocity
-	velocity = Vector2.from_angle(rotation) * max_velocity
-	
-	# Apply movement and check for player collision
-	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
-	if collision:
-		var collider = collision.get_collider()
-		if collider is Player:
-			on_collision_with_player(collider)
-	
-	handle_screen_wrap()
-
 func on_collision_with_player(collider):
 	if can_collide:
 		self.apply_damage(max_health)
@@ -204,13 +159,13 @@ func on_collision_with_player(collider):
 		# Disable collisions temporarily
 		set_deferred("collision_layer", 0)
 		set_deferred("collision_mask", 0)
-
+		
 func _on_CollisionCooldownTimer_timeout():
 	can_collide = true
 	# Re-enable collisions (use your original layer/mask numbers)
 	set_deferred("collision_layer", 1)
 	set_deferred("collision_mask", 1)
-
+	
 func handle_screen_wrap() -> void:
 	var screen_size = get_viewport().get_visible_rect().size
 
@@ -228,3 +183,17 @@ func handle_screen_wrap() -> void:
 
 func set_sprite(sprite : Texture2D) -> void:
 	$SpriteBoundingBox/BodySprite.texture = sprite
+
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		current_target = body
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	action_states["fire"] = 1
+
+func _on_attack_area_body_exited(body: Node2D) -> void:
+	action_states["fire"] = 0
+
+func _on_attack_area_area_entered(area: Area2D) -> void:
+	if area is Upgrade:
+		current_target = area		

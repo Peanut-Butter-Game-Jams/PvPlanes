@@ -48,7 +48,7 @@ func _apply_hit(body: Node, new_position: Vector2) -> void:
 	if body.get_instance_id() == _shooter_id:
 		return
 	
-	if body is Player:
+	if body is CharacterBody2D:
 		body.apply_damage(damage) 
 	
 	# Play effects

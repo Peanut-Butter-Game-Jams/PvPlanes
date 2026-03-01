@@ -6,8 +6,8 @@ extends BaseUpgradeStrategy
 func _ready() -> void:
 	isPlayerUpgrade = true;
 
-func apply_upgrade_to_player(player: Player):
-	player.add_shield(shield_value)
+func apply_upgrade_to_player(player: CharacterBody2D):
+	player.add_shield()
 	
 func apply_upgrade_to_projectile(bullet: Bullet):
 	pass

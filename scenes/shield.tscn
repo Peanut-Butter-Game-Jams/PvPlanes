@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b4hnowgwqd8eo"]
+
+[ext_resource type="Script" uid="uid://lh41adie1rk2" path="res://scripts/shield.gd" id="1_ohv3a"]
+[ext_resource type="Texture2D" uid="uid://b8hugguhu8ek7" path="res://imgs/shield.png" id="2_e3gf5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vxx4"]
+
+[node name="Shield" type="Area2D" unique_id=60234383]
+position = Vector2(-6.999998, 0)
+scale = Vector2(3.8151853, 3.8151853)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ohv3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1908489463]
+light_mask = 8
+scale = Vector2(0.04665948, 0.04665948)
+texture = ExtResource("2_e3gf5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=193562361]
+shape = SubResource("CircleShape2D_0vxx4")
+
+[connection signal="child_entered_tree" from="CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]

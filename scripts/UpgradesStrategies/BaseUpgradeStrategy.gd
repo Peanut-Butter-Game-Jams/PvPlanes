@@ -6,7 +6,7 @@ extends Resource
 @export var upgrade_text : String = "Upgrade"
 @export var isPlayerUpgrade : bool = false
 
-func apply_upgrade_to_player(player: Player):
+func apply_upgrade_to_player(player: CharacterBody2D):
 	pass
 	
 func apply_upgrade_to_projectile(bullet: Bullet):
