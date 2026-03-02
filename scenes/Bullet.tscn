@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qfxptdf5pkh0"]
 
-[ext_resource type="Script" uid="uid://bgr6e33qf1g5e" path="res://scripts/Bullet.gd" id="1_p1sfj"]
-[ext_resource type="Texture2D" uid="uid://dx85s7absbrtj" path="res://assets/Porjectile.png" id="2_p1sfj"]
+[ext_resource type="Script" uid="uid://bgr6e33qf1g5e" path="res://scripts/bullet.gd" id="1_p1sfj"]
+[ext_resource type="Texture2D" uid="uid://clqiju2iav211" path="res://imgs/Bullet.png" id="2_p1sfj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kdm4f"]
 radius = 30.9919
@@ -12,18 +12,15 @@ collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_p1sfj")
 speed = 1000.0
-damage = 25
+damage = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=481237182]
-position = Vector2(15.000057, 5.722046e-05)
+position = Vector2(19.000002, 4)
 rotation = 1.5708
+scale = Vector2(0.13456196, 0.17689055)
 texture = ExtResource("2_p1sfj")
 
 [node name="Collider" type="CollisionShape2D" parent="." unique_id=1816837920]
 position = Vector2(18.000057, 5.722046e-05)
-scale = Vector2(0.14195259, 0.14195259)
+scale = Vector2(0.38195258, 0.14195259)
 shape = SubResource("CircleShape2D_kdm4f")
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1289076673]
-
-[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

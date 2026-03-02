@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://1b8nhclltup2"]
 
-[ext_resource type="Texture2D" uid="uid://w87qeicsn8s2" path="res://imgs/plane_3_red.png" id="1_4gyqm"]
-[ext_resource type="Script" uid="uid://dgavan438uokt" path="res://scripts/enemy.gd" id="1_4ra3w"]
-[ext_resource type="Texture2D" uid="uid://d03koajfsxkc" path="res://imgs/Thrust.png" id="2_qi2p4"]
+[ext_resource type="Script" uid="uid://dgavan438uokt" path="res://scripts/enemy.gd" id="1_ft8do"]
+[ext_resource type="AudioStream" uid="uid://bfd4gw2dy3rrc" path="res://assets/sounds/fire_projectile.wav" id="2_5wwv6"]
+[ext_resource type="Texture2D" uid="uid://w87qeicsn8s2" path="res://imgs/plane_3_red.png" id="3_1vja8"]
+[ext_resource type="Texture2D" uid="uid://d03koajfsxkc" path="res://imgs/Thrust.png" id="4_iwav8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
 size = Vector2(33, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e80uo"]
-atlas = ExtResource("2_qi2p4")
+atlas = ExtResource("4_iwav8")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxr5p"]
-atlas = ExtResource("2_qi2p4")
+atlas = ExtResource("4_iwav8")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_epg4t"]
@@ -29,13 +30,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_5uy6h"]
+points = PackedVector2Array(0, 0, -10.75, 1.5, -10.759, -1.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5uy6h"]
+radius = 6.7654157
+height = 20.12704
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1221521408]
 scale = Vector2(1.254, 1.254)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_4ra3w")
+script = ExtResource("1_ft8do")
+turn_speed = 2.0
+fire_sound = ExtResource("2_5wwv6")
+max_velocity = 500.0
 
 [node name="SpriteBoundingBox" type="CollisionShape2D" parent="." unique_id=853904326]
 position = Vector2(-11.5, 0)
@@ -45,7 +54,7 @@ shape = SubResource("RectangleShape2D_iifgy")
 position = Vector2(11.5, 0)
 rotation = 1.5708
 scale = Vector2(0.24088664, 0.24088664)
-texture = ExtResource("1_4gyqm")
+texture = ExtResource("3_1vja8")
 
 [node name="LeftThrusterSprite" type="AnimatedSprite2D" parent="SpriteBoundingBox" unique_id=2117953318]
 position = Vector2(-28, -13.5)
@@ -81,17 +90,21 @@ collision_layer = 0
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Area" unique_id=1469816840]
+z_index = 10
 scale = Vector2(-54.39248, -54.39248)
-shape = SubResource("CircleShape2D_4ra3w")
+shape = SubResource("ConvexPolygonShape2D_5uy6h")
 
 [node name="Detection Area" type="Area2D" parent="." unique_id=1563022492]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area" unique_id=604178767]
-scale = Vector2(-54.39248, -54.39248)
-shape = SubResource("CircleShape2D_4ra3w")
+position = Vector2(62.99841, 3.1897929)
+rotation = 1.5707964
+scale = Vector2(-22.1598, -22.625463)
+shape = SubResource("CapsuleShape2D_5uy6h")
 
 [connection signal="area_entered" from="Attack Area" to="." method="_on_attack_area_area_entered"]
 [connection signal="body_entered" from="Attack Area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="Attack Area" to="." method="_on_attack_area_body_exited"]
+[connection signal="area_entered" from="Detection Area" to="." method="_on_detection_area_area_entered"]
 [connection signal="body_entered" from="Detection Area" to="." method="_on_detection_area_body_entered"]

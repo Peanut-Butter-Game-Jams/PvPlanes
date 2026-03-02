@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="DamageUpgradeStrategy" load_steps=3 format=3 uid="uid://do27kq3uuxvi4"]
+[gd_resource type="Resource" script_class="DamageUpgradeStrategy" format=3 uid="uid://do27kq3uuxvi4"]
 
 [ext_resource type="Script" uid="uid://dd81q3rxtr655" path="res://scripts/UpgradesStrategies/DamageUpgradeStrategy.gd" id="1_5x11e"]
-[ext_resource type="Texture2D" uid="uid://crnaftvqmjj1d" path="res://assets/Damage_Upgrade.png" id="2_6iklk"]
+[ext_resource type="Texture2D" uid="uid://un25eok170p8" path="res://imgs/DamageUpgrade.png" id="2_5x11e"]
 
 [resource]
 script = ExtResource("1_5x11e")
-damage_increase = 5
-texture = ExtResource("2_6iklk")
+texture = ExtResource("2_5x11e")
 upgrade_text = "Damage"
-isPlayerUpgrade = false
 metadata/_custom_type_script = "uid://dd81q3rxtr655"

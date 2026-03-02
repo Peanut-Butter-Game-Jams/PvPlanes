@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="HealthUpgradeStrategy" load_steps=3 format=3 uid="uid://p47i5lcvfb6i"]
+[gd_resource type="Resource" script_class="HealthUpgradeStrategy" format=3 uid="uid://p47i5lcvfb6i"]
 
 [ext_resource type="Script" uid="uid://bape0gbqwrffh" path="res://scripts/UpgradesStrategies/HealthUpgradeStrategy.gd" id="1_cnkks"]
-[ext_resource type="Texture2D" uid="uid://cglqhdwjt372s" path="res://assets/Health_Upgrade.png" id="2_l5avk"]
+[ext_resource type="Texture2D" uid="uid://dx3m5phgkga52" path="res://imgs/HealthUpgrade.png" id="2_op7q2"]
 
 [resource]
 script = ExtResource("1_cnkks")
-health_value = 0.5
-texture = ExtResource("2_l5avk")
+texture = ExtResource("2_op7q2")
 upgrade_text = "Health"
 isPlayerUpgrade = true
 metadata/_custom_type_script = "uid://bape0gbqwrffh"

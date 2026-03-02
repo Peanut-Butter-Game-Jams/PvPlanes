@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c5tmp6res368f"]
+
+[ext_resource type="PackedScene" uid="uid://cwhlk0xlxns7v" path="res://scenes/HealthBar.tscn" id="1_ahhtf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=955029702]
+
+[node name="PlayerHealth" parent="." unique_id=734722787 instance=ExtResource("1_ahhtf")]
+offset_left = 26.0
+offset_top = 20.0
+offset_right = 204.0
+offset_bottom = 198.0
+
+[node name="EnemyHealth" parent="." unique_id=949286977 instance=ExtResource("1_ahhtf")]
+offset_left = 1709.0
+offset_top = 23.0
+offset_right = 1887.0
+offset_bottom = 201.0

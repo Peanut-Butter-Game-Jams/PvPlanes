@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="ShieldUpgradeStrategy" load_steps=3 format=3 uid="uid://rncee2tk0bju"]
+[gd_resource type="Resource" script_class="ShieldUpgradeStrategy" format=3 uid="uid://rncee2tk0bju"]
 
 [ext_resource type="Script" uid="uid://ds1wqws72i1g2" path="res://scripts/UpgradesStrategies/ShieldUpgradeStrategy.gd" id="1_32dy5"]
-[ext_resource type="Texture2D" uid="uid://d1e7ubdbjbrj4" path="res://assets/Shield_Upgrade.png" id="2_32dy5"]
+[ext_resource type="Texture2D" uid="uid://60w5n6wkxu20" path="res://imgs/ShieldUpgrade.png" id="2_32dy5"]
 
 [resource]
 script = ExtResource("1_32dy5")
-shield_value = 25
 texture = ExtResource("2_32dy5")
 upgrade_text = "Shield"
 isPlayerUpgrade = true

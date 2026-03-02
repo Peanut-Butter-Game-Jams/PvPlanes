@@ -1,9 +1,57 @@
 [gd_scene format=3 uid="uid://ch4ror07qtcih"]
 
-[ext_resource type="Script" uid="uid://djflllwa6vghn" path="res://scripts/GameScene.gd" id="1_xy3my"]
-[ext_resource type="PackedScene" uid="uid://dh5x50r2quvdw" path="res://scenes/GameManger.tscn" id="8_vijgj"]
+[ext_resource type="Texture2D" uid="uid://bj3ikbgirhn87" path="res://imgs/menu/BlueBackground.png" id="1_vh257"]
+[ext_resource type="Script" uid="uid://ebgdwleuuc3p" path="res://scenes/game_scene.gd" id="1_xy3my"]
+[ext_resource type="PackedScene" uid="uid://cwhlk0xlxns7v" path="res://scenes/HealthBar.tscn" id="3_cxv17"]
+[ext_resource type="Texture2D" uid="uid://dx3m5phgkga52" path="res://imgs/HealthUpgrade.png" id="4_7s5hy"]
+[ext_resource type="Texture2D" uid="uid://60w5n6wkxu20" path="res://imgs/ShieldUpgrade.png" id="5_xs4ih"]
 
-[node name="World" type="Node2D" unique_id=1511289795]
+[node name="GameScene" type="Node2D" unique_id=1511289795]
+z_index = -10
 script = ExtResource("1_xy3my")
 
-[node name="GameManger" parent="." unique_id=1666964729 instance=ExtResource("8_vijgj")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2069174337]
+texture = ExtResource("1_vh257")
+centered = false
+
+[node name="PlayerBars" type="Node2D" parent="." unique_id=114667932]
+
+[node name="PlayerHealthBar" parent="PlayerBars" unique_id=734722787 instance=ExtResource("3_cxv17")]
+offset_left = 49.0
+offset_top = 34.0
+offset_right = 227.0
+offset_bottom = 212.0
+value = 100.0
+texture_progress = ExtResource("4_7s5hy")
+health_bar = true
+
+[node name="PlayerShieldBar" parent="PlayerBars" unique_id=2100381848 instance=ExtResource("3_cxv17")]
+offset_left = 49.0
+offset_top = 33.0
+offset_right = 227.0
+offset_bottom = 211.0
+value = 100.0
+texture_under = null
+texture_progress = ExtResource("5_xs4ih")
+shield_bar = true
+
+[node name="EnemyBars" type="Node2D" parent="." unique_id=752531769]
+
+[node name="EnemyHealthBar" parent="EnemyBars" unique_id=1410905047 instance=ExtResource("3_cxv17")]
+offset_left = 1678.0
+offset_top = 34.0
+offset_right = 1856.0
+offset_bottom = 212.0
+value = 100.0
+texture_progress = ExtResource("4_7s5hy")
+health_bar = true
+
+[node name="EnemyShieldBar" parent="EnemyBars" unique_id=1748905764 instance=ExtResource("3_cxv17")]
+offset_left = 1678.0
+offset_top = 34.0
+offset_right = 1856.0
+offset_bottom = 212.0
+value = 100.0
+texture_under = null
+texture_progress = ExtResource("5_xs4ih")
+shield_bar = true

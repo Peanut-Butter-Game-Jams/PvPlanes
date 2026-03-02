@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjk14gkq5u60m"
-path="res://.godot/imported/Plane.png-3be41a3fca54bb8e7ba42f1406501fd1.ctex"
+uid="uid://djgktlpl2gq42"
+path="res://.godot/imported/FireRateUpgrade.png-b778943403c1c77b6d42b03742cf58e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imgs/Plane.png"
-dest_files=["res://.godot/imported/Plane.png-3be41a3fca54bb8e7ba42f1406501fd1.ctex"]
+source_file="res://imgs/FireRateUpgrade.png"
+dest_files=["res://.godot/imported/FireRateUpgrade.png-b778943403c1c77b6d42b03742cf58e8.ctex"]
 
 [params]
 

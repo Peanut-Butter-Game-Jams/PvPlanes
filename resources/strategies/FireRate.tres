@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="FirerateUpgradeStrategy" load_steps=3 format=3 uid="uid://0d0r667hcnnm"]
+[gd_resource type="Resource" script_class="FirerateUpgradeStrategy" format=3 uid="uid://0d0r667hcnnm"]
 
 [ext_resource type="Script" uid="uid://25w3q5rjgytn" path="res://scripts/UpgradesStrategies/FirerateUpgradeStrategy.gd" id="1_ijohe"]
-[ext_resource type="Texture2D" uid="uid://du5tsryu3pip2" path="res://assets/Fire_Rate_Upgrade.png" id="2_f6dlt"]
+[ext_resource type="Texture2D" uid="uid://djgktlpl2gq42" path="res://imgs/FireRateUpgrade.png" id="2_lhvlj"]
 
 [resource]
 script = ExtResource("1_ijohe")
-fire_rate_modifier = 2
-texture = ExtResource("2_f6dlt")
+texture = ExtResource("2_lhvlj")
 upgrade_text = "Fire Rate"
 isPlayerUpgrade = true
 metadata/_custom_type_script = "uid://25w3q5rjgytn"

@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0vxx4"]
 
 [node name="Shield" type="Area2D" unique_id=60234383]
+z_index = -1
 position = Vector2(-6.999998, 0)
 scale = Vector2(3.8151853, 3.8151853)
 collision_layer = 4
