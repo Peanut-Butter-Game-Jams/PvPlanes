@@ -23,11 +23,11 @@ const max_upgrade_count = 5
 var current_upgrade_count = 0
 
 var players : Array
+var upgrade_nodes : Array
 
 func _ready() -> void:
 	randomize()
 	
-
 func set_players(new_players: Array):
 	players = new_players
 
@@ -42,7 +42,7 @@ func on_scene_initialized():
 	enemy_health_bar = get_tree().current_scene.find_child("EnemyHealthBar", true, false) 
 	enemy_shield_bar = get_tree().current_scene.find_child("EnemyShieldBar", true, false) 
 	spawn_players()
-	spawn_enemy()
+	#spawn_enemy()
 	
 	start_upgrade_spawn_timer()
 
@@ -66,6 +66,7 @@ func spawn_node() -> void:
 		)
 	
 		add_child(new_upgrade)
+		upgrade_nodes.append(new_upgrade)
 		current_upgrade_count += 1	
 	start_upgrade_spawn_timer()
 
@@ -73,11 +74,12 @@ func spawn_players() -> void:
 	for i in range(players.size()):
 		if players[i] == true:
 			var new_player = player_scene.instantiate()
+			new_player.set_device_id(i)
+			add_child(new_player)
+			new_player.global_position = Vector2(randi_range(0,800),randi_range(0,800))
 			player_health_bar.entity = new_player
 			player_shield_bar.entity = new_player
-			var random_pos = Vector2(randi_range(0,800),randi_range(0,800))
 			new_player.set_sprite(player_sprites[i])
-			new_player.global_position = random_pos
 			add_child(new_player)
 
 func spawn_enemy() -> void:
@@ -90,8 +92,10 @@ func spawn_enemy() -> void:
 	new_enemy.global_position = random_pos
 	add_child(new_enemy)
 
-func setup_hud() -> void:
-	var health_bar = game_scene.get_child(0)
-
 func load_game_scene() -> void:
 	get_tree().change_scene_to_packed(game_scene)
+
+func get_random_upgrade() -> Node2D:
+	if not upgrade_nodes.is_empty():
+		return upgrade_nodes[randi_range(0, upgrade_nodes.size() - 1)]
+	return

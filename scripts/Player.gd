@@ -58,3 +58,7 @@ func handle_movement(delta: float) -> void:
 	# Apply movement and check for player collision
 	move_and_collide(velocity * delta)
 	handle_screen_wrap()
+
+func set_device_id(new_device_id) -> void:
+	device_id = new_device_id
+	

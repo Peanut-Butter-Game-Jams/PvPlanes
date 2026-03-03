@@ -30,4 +30,5 @@ func on_body_entered(body: CharacterBody2D):
 			body.player_upgrades.append(upgrade_strategy)
 		elif not upgrade_strategy.isPlayerUpgrade:
 			body.bullet_upgrades.append(upgrade_strategy)
+		Manager.upgrade_nodes.erase(self)
 		queue_free()

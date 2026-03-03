@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ch4ror07qtcih"]
 
 [ext_resource type="Texture2D" uid="uid://bj3ikbgirhn87" path="res://imgs/menu/BlueBackground.png" id="1_vh257"]
-[ext_resource type="Script" uid="uid://ebgdwleuuc3p" path="res://scenes/game_scene.gd" id="1_xy3my"]
+[ext_resource type="Script" uid="uid://ebgdwleuuc3p" path="res://scripts/game_scene.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://cwhlk0xlxns7v" path="res://scenes/HealthBar.tscn" id="3_cxv17"]
 [ext_resource type="Texture2D" uid="uid://dx3m5phgkga52" path="res://imgs/HealthUpgrade.png" id="4_7s5hy"]
 [ext_resource type="Texture2D" uid="uid://60w5n6wkxu20" path="res://imgs/ShieldUpgrade.png" id="5_xs4ih"]

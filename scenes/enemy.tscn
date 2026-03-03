@@ -98,13 +98,16 @@ shape = SubResource("ConvexPolygonShape2D_5uy6h")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area" unique_id=604178767]
-position = Vector2(62.99841, 3.1897929)
+position = Vector2(62.200962, 4.7846894)
 rotation = 1.5707964
 scale = Vector2(-22.1598, -22.625463)
 shape = SubResource("CapsuleShape2D_5uy6h")
+
+[node name="NodeTimer" type="Timer" parent="." unique_id=40745336]
 
 [connection signal="area_entered" from="Attack Area" to="." method="_on_attack_area_area_entered"]
 [connection signal="body_entered" from="Attack Area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="Attack Area" to="." method="_on_attack_area_body_exited"]
 [connection signal="area_entered" from="Detection Area" to="." method="_on_detection_area_area_entered"]
 [connection signal="body_entered" from="Detection Area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Detection Area" to="." method="_on_detection_area_body_exited"]
