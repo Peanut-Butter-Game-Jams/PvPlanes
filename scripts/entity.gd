@@ -80,7 +80,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
-	handle_weapon_actions(delta)
 	if(current_health <= 0):
 		die()
 
@@ -88,19 +87,17 @@ func die() -> void:
 	#TODO: Play some sort of death animation
 	queue_free()
 
-func handle_weapon_actions(delta: float) -> void:
+func shoot() -> void:
 	# Fire Input
-	if action_states["fire"] and gun_cooldown_timer.is_stopped():
-		var bullet = bullet_scene.instantiate()
-		get_tree().current_scene.add_child(bullet)
-		
-		for upgrade in bullet_upgrades:
-			upgrade.apply_upgrade_to_projectile(bullet)
-		
-		bullet.fire(global_position, rotation, get_instance_id())
-		play_sound_effect(fire_sound)
-		bullet.show()
-		gun_cooldown_timer.start(fire_rate * fire_rate_modifier)
+	var bullet = bullet_scene.instantiate()
+	get_tree().current_scene.add_child(bullet)
+	
+	for upgrade in bullet_upgrades:
+		upgrade.apply_upgrade_to_projectile(bullet)
+	
+	bullet.fire(global_position, rotation, get_instance_id())
+	play_sound_effect(fire_sound)
+	bullet.show()
 
 func play_sound_effect(stream: AudioStream):
 	for sound_player in sound_players:

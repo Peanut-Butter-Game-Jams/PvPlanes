@@ -2,13 +2,6 @@ extends Node2D
 const GAME_SCENE = preload("res://scenes/GameScene.tscn")
 signal game_ready(players : Array)
 
-enum PLAYER
-{
-	ONE,
-	TWO,
-	THREE,
-	FOUR
-}
 var players = [false,false,false,false]
 var ready_players = [false,false,false,false]
 var all_players_ready = false
@@ -44,51 +37,18 @@ func _ready() -> void:
 	player_check_boxes = [check_box_one, check_box_two, check_box_three, check_box_four]
 	player_check_marks = [check_one, check_two, check_three, check_four]
 
-func _process(delta: float) -> void:
-	# PLAYER ONE ACTIONS
-	if Input.is_action_just_pressed("kb_space"):
-		player_active(PLAYER.ONE, true)
-	if Input.is_action_just_pressed("kb_escape"):
-		if ready_players[PLAYER.ONE] == true:
-			player_ready(PLAYER.ONE, false)
+func _input(event: InputEvent) -> void:
+	var device_id = event.device
+	if Input.is_action_just_pressed("controller_confirm") or Input.is_action_just_pressed("kb_space"):
+		player_active(device_id, true)
+	if Input.is_action_just_pressed("controller_return") or Input.is_action_just_pressed("kb_escape"):
+		if ready_players[device_id]:
+			player_ready(device_id, false)
 		else:
-			player_active(PLAYER.ONE, false)
-	if Input.is_action_just_pressed("kb_enter"):
-		player_ready(PLAYER.ONE, true)
+			player_active(device_id, false)
+	if Input.is_action_just_pressed("controller_start") or Input.is_action_just_pressed("kb_enter"):
+		player_ready(device_id, true)
 		
-	# PLAYER TWO ACTIONS
-	if Input.is_action_just_pressed("controller_one_confirm"):
-		player_active(PLAYER.TWO, true)
-	if Input.is_action_just_pressed("controller_one_return"):
-		if ready_players[PLAYER.TWO] == true:
-			player_ready(PLAYER.TWO, false)
-		else:
-			player_active(PLAYER.TWO, false)
-	if Input.is_action_just_pressed("controller_one_start"):
-		player_ready(PLAYER.TWO, true)
-
-	# PLAYER THREE ACTIONS
-	if Input.is_action_just_pressed("controller_two_confirm"):
-		player_active(PLAYER.THREE, true)
-	if Input.is_action_just_pressed("controller_two_return"):
-		if ready_players[PLAYER.THREE] == true:
-			player_ready(PLAYER.THREE, false)
-		else:
-			player_active(PLAYER.THREE, false)
-	if Input.is_action_just_pressed("controller_two_start"):
-		player_ready(PLAYER.THREE, true)
-		
-	# PLAYER FOUR ACTIONS
-	if Input.is_action_just_pressed("controller_three_confirm"):
-		player_active(PLAYER.FOUR, true)
-	if Input.is_action_just_pressed("controller_three_return"):
-		if ready_players[PLAYER.FOUR] == true:
-			player_ready(PLAYER.FOUR, false)
-		else:
-			player_active(PLAYER.FOUR, false)
-	if Input.is_action_just_pressed("controller_three_start"):
-		player_ready(PLAYER.FOUR, true)
-
 func player_active(player_index: int, active : bool):
 	players[player_index] = active
 	player_buttons[player_index].visible = !active
@@ -97,10 +57,10 @@ func player_active(player_index: int, active : bool):
 func player_ready(player_index: int, ready : bool):
 	ready_players[player_index] = ready
 	player_check_marks[player_index].visible = ready
-	# Start game if all players are ready
+	
 	if players == ready_players:
 		start_game()
-
+	
 func start_game():
 	Manager.set_players(players)
 	Manager.start_game()

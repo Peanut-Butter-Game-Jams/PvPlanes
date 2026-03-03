@@ -18,6 +18,7 @@ offset_bottom = 1080.0
 texture = ExtResource("2_vptqc")
 
 [node name="PlayerOne" type="Node2D" parent="." unique_id=1689905298]
+position = Vector2(19, -689)
 
 [node name="PlayerOneButton" type="Sprite2D" parent="PlayerOne" unique_id=1774567964]
 position = Vector2(219, 891)
@@ -42,6 +43,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_xox0g")
 
 [node name="PlayerTwo" type="Node2D" parent="." unique_id=1958059880]
+position = Vector2(1026, -691)
 
 [node name="PlayerTwoButton" type="Sprite2D" parent="PlayerTwo" unique_id=667860006]
 position = Vector2(657, 890)
@@ -66,6 +68,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_xox0g")
 
 [node name="PlayerThree" type="Node2D" parent="." unique_id=632961282]
+position = Vector2(-927, 5)
 
 [node name="PlayerThreeButton" type="Sprite2D" parent="PlayerThree" unique_id=1190106512]
 position = Vector2(1163, 890)
@@ -90,6 +93,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_xox0g")
 
 [node name="PlayerFour" type="Node2D" parent="." unique_id=2019349074]
+position = Vector2(-26, 14)
 
 [node name="PlayerFourButton" type="Sprite2D" parent="PlayerFour" unique_id=1140738772]
 position = Vector2(1712, 893)
