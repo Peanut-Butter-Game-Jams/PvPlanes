@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DamageUpgradeStrategy" format=3 uid="uid://do27kq3uuxvi4"]
 
-[ext_resource type="Script" uid="uid://dd81q3rxtr655" path="res://scripts/UpgradesStrategies/DamageUpgradeStrategy.gd" id="1_5x11e"]
-[ext_resource type="Texture2D" uid="uid://un25eok170p8" path="res://imgs/DamageUpgrade.png" id="2_5x11e"]
+[ext_resource type="Script" uid="uid://da15ejl4is4jn" path="res://scripts/upgrades/DamageUpgradeStrategy.gd" id="1_5x11e"]
+[ext_resource type="Texture2D" uid="uid://tom4ixqhjhm2" path="res://sprites/upgrades/DamageUpgrade.png" id="2_5x11e"]
 
 [resource]
 script = ExtResource("1_5x11e")

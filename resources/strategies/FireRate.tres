@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FirerateUpgradeStrategy" format=3 uid="uid://0d0r667hcnnm"]
 
-[ext_resource type="Script" uid="uid://25w3q5rjgytn" path="res://scripts/UpgradesStrategies/FirerateUpgradeStrategy.gd" id="1_ijohe"]
-[ext_resource type="Texture2D" uid="uid://djgktlpl2gq42" path="res://imgs/FireRateUpgrade.png" id="2_lhvlj"]
+[ext_resource type="Script" uid="uid://2gvv7qrym6ph" path="res://scripts/upgrades/FirerateUpgradeStrategy.gd" id="1_ijohe"]
+[ext_resource type="Texture2D" uid="uid://c0y7f0xwi56w4" path="res://sprites/upgrades/FireRateUpgrade.png" id="2_lhvlj"]
 
 [resource]
 script = ExtResource("1_ijohe")

@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://csocquicgi2cs"]
+
+[ext_resource type="Script" uid="uid://b8ydd1uxbgm3y" path="res://scripts/menu/start_menu.gd" id="1_73a2t"]
+[ext_resource type="Texture2D" uid="uid://24ruyhf7w21p" path="res://sprites/menus/Background.png" id="1_jwbto"]
+[ext_resource type="Texture2D" uid="uid://csx0hq4jwlyoi" path="res://sprites/menus/StartMenu/PvPlanes.png" id="2_ia0g5"]
+[ext_resource type="Texture2D" uid="uid://dk0808m663lo4" path="res://sprites/menus/StartMenu/Start-hover.png" id="3_pgi0o"]
+[ext_resource type="Texture2D" uid="uid://b8m3mj3cq0sjn" path="res://sprites/menus/StartMenu/Start.png" id="3_vpdu5"]
+[ext_resource type="Script" uid="uid://30htoj5g3u5a" path="res://scripts/menu/start_button.gd" id="4_v2mkm"]
+[ext_resource type="Texture2D" uid="uid://cukigsmtbxx1y" path="res://sprites/menus/StartMenu/Quit.png" id="6_73a2t"]
+[ext_resource type="Texture2D" uid="uid://cedqheg02y2fn" path="res://sprites/menus/StartMenu/Quit-hover.png" id="7_xsckg"]
+[ext_resource type="Script" uid="uid://04m57j7pcdf1" path="res://scripts/menu/quit_button.gd" id="8_gfl6h"]
+
+[sub_resource type="Animation" id="Animation_v2mkm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu/StartButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartMenu/QuitButton:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartMenu/PvPlanes:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vpdu5"]
+resource_name = "pulsate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu/StartButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.01, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.6, 0.6), Vector2(0.8, 0.8), Vector2(0.6, 0.6), Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartMenu/QuitButton:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.01, 2.02, 2.99, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.4, 0.4), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartMenu/PvPlanes:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2.01, 3.01, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0, 0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ctwoq"]
+_data = {
+&"RESET": SubResource("Animation_v2mkm"),
+&"pulsate": SubResource("Animation_vpdu5")
+}
+
+[node name="StartMenu" type="Node2D" unique_id=1184413246]
+script = ExtResource("1_73a2t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=440317282]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_ctwoq")
+autoplay = &"RESET"
+
+[node name="Background" type="TextureRect" parent="." unique_id=436970803]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_jwbto")
+
+[node name="PvPlanes" type="TextureRect" parent="." unique_id=280508011]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 405.0
+offset_top = 126.0
+offset_right = 1543.0
+offset_bottom = 528.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(569, 201)
+texture = ExtResource("2_ia0g5")
+
+[node name="StartButton" type="TextureButton" parent="." unique_id=1866196753]
+offset_left = 726.0
+offset_top = 737.0
+offset_right = 1134.0
+offset_bottom = 887.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(204, 75)
+texture_normal = ExtResource("3_vpdu5")
+texture_hover = ExtResource("3_pgi0o")
+texture_focused = ExtResource("3_pgi0o")
+script = ExtResource("4_v2mkm")
+
+[node name="QuitButton" type="TextureButton" parent="." unique_id=1033820343]
+offset_left = 762.0
+offset_top = 862.0
+offset_right = 1103.0
+offset_bottom = 1017.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(170.5, 77.5)
+texture_normal = ExtResource("6_73a2t")
+texture_hover = ExtResource("7_xsckg")
+texture_focused = ExtResource("7_xsckg")
+script = ExtResource("8_gfl6h")
+
+[connection signal="mouse_entered" from="StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="StartButton" to="." method="_on_start_button_mouse_exited"]
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="QuitButton" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_pressed"]

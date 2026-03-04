@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RangeUpgradeStrategy" format=3 uid="uid://bxjjfh8wy2c5i"]
 
-[ext_resource type="Script" uid="uid://bkxsminoxd8la" path="res://scripts/UpgradesStrategies/RangeUpgradeStrategy.gd" id="1_c6cuu"]
-[ext_resource type="Texture2D" uid="uid://cenerjy28j310" path="res://imgs/RangeUpgrade.png" id="2_kvy1c"]
+[ext_resource type="Script" uid="uid://beyo1ls0kdxs3" path="res://scripts/upgrades/RangeUpgradeStrategy.gd" id="1_c6cuu"]
+[ext_resource type="Texture2D" uid="uid://b4iy3s072o7dh" path="res://sprites/upgrades/RangeUpgrade.png" id="2_kvy1c"]
 
 [resource]
 script = ExtResource("1_c6cuu")

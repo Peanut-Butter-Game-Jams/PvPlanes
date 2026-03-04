@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://ch4ror07qtcih"]
+
+[ext_resource type="Texture2D" uid="uid://lmfgiir6d30j" path="res://sprites/menus/BlueBackground.png" id="1_vh257"]
+[ext_resource type="Script" uid="uid://2plfa22swhlm" path="res://scripts/menu/game_scene.gd" id="1_xy3my"]
+[ext_resource type="PackedScene" uid="uid://cwhlk0xlxns7v" path="res://scenes/hud/HealthBar.tscn" id="3_cxv17"]
+[ext_resource type="Texture2D" uid="uid://bckjg7cvei3y4" path="res://sprites/upgrades/HealthUpgrade.png" id="4_7s5hy"]
+[ext_resource type="Texture2D" uid="uid://12mcgtaxqfi" path="res://sprites/upgrades/ShieldUpgrade.png" id="5_xs4ih"]
+
+[node name="GameScene" type="Node2D" unique_id=1511289795]
+z_index = -10
+script = ExtResource("1_xy3my")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2069174337]
+texture = ExtResource("1_vh257")
+centered = false
+
+[node name="PlayerOne" type="Node2D" parent="." unique_id=114667932]
+position = Vector2(-24, -13)
+
+[node name="HealthBar" parent="PlayerOne" unique_id=734722787 instance=ExtResource("3_cxv17")]
+offset_left = 49.0
+offset_top = 34.0
+offset_right = 227.0
+offset_bottom = 212.0
+value = 100.0
+texture_progress = ExtResource("4_7s5hy")
+health_bar = true
+
+[node name="ShieldBar" parent="PlayerOne" unique_id=2100381848 instance=ExtResource("3_cxv17")]
+offset_left = 49.0
+offset_top = 33.0
+offset_right = 227.0
+offset_bottom = 211.0
+value = 100.0
+texture_under = null
+texture_progress = ExtResource("5_xs4ih")
+shield_bar = true
+
+[node name="BoostBar" parent="PlayerOne" unique_id=1981759722 instance=ExtResource("3_cxv17")]
+offset_left = 151.0
+offset_top = 41.000008
+offset_right = 329.0
+offset_bottom = 219.0
+scale = Vector2(0.74731106, 0.17729197)
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("4_7s5hy")
+boost_bar = true
+
+[node name="PlayerTwo" type="Node2D" parent="." unique_id=752531769]
+position = Vector2(119, -21)
+
+[node name="HealthBar" parent="PlayerTwo" unique_id=1410905047 instance=ExtResource("3_cxv17")]
+offset_left = 1678.0
+offset_top = 34.0
+offset_right = 1856.0
+offset_bottom = 212.0
+value = 100.0
+texture_progress = ExtResource("4_7s5hy")
+health_bar = true
+
+[node name="ShieldBar" parent="PlayerTwo" unique_id=1748905764 instance=ExtResource("3_cxv17")]
+offset_left = 1678.0
+offset_top = 34.0
+offset_right = 1856.0
+offset_bottom = 212.0
+value = 100.0
+texture_under = null
+texture_progress = ExtResource("5_xs4ih")
+shield_bar = true
+
+[node name="BoostBar" parent="PlayerTwo" unique_id=1208317470 instance=ExtResource("3_cxv17")]
+offset_left = 1518.9999
+offset_top = 46.0
+offset_right = 1696.9999
+offset_bottom = 224.0
+scale = Vector2(0.74731106, 0.17729197)
+value = 100.0
+texture_progress = ExtResource("4_7s5hy")
+boost_bar = true
+
+[node name="PlayerThree" type="Node2D" parent="." unique_id=330458737]
+position = Vector2(-26, 936)
+
+[node name="HealthBar" parent="PlayerThree" unique_id=949538723 instance=ExtResource("3_cxv17")]
+offset_left = 49.0
+offset_top = 34.0
+offset_right = 227.0
+offset_bottom = 212.0
+value = 100.0
+texture_progress = ExtResource("4_7s5hy")
+health_bar = true
+
+[node name="ShieldBar" parent="PlayerThree" unique_id=923663733 instance=ExtResource("3_cxv17")]
+offset_left = 49.0
+offset_top = 33.0
+offset_right = 227.0
+offset_bottom = 211.0
+value = 100.0
+texture_under = null
+texture_progress = ExtResource("5_xs4ih")
+shield_bar = true
+
+[node name="BoostBar" parent="PlayerThree" unique_id=634916808 instance=ExtResource("3_cxv17")]
+offset_left = 153.00002
+offset_top = 43.000008
+offset_right = 331.0
+offset_bottom = 221.0
+scale = Vector2(0.74731106, 0.17729197)
+value = 100.0
+texture_progress = ExtResource("4_7s5hy")
+boost_bar = true
+
+[node name="PlayerFour" type="Node2D" parent="." unique_id=1019345012]
+position = Vector2(1751, 936)
+
+[node name="HealthBar" parent="PlayerFour" unique_id=692883359 instance=ExtResource("3_cxv17")]
+offset_left = 49.0
+offset_top = 34.0
+offset_right = 227.0
+offset_bottom = 212.0
+value = 100.0
+texture_progress = ExtResource("4_7s5hy")
+health_bar = true
+
+[node name="ShieldBar" parent="PlayerFour" unique_id=475826035 instance=ExtResource("3_cxv17")]
+offset_left = 49.0
+offset_top = 33.0
+offset_right = 227.0
+offset_bottom = 211.0
+value = 100.0
+texture_under = null
+texture_progress = ExtResource("5_xs4ih")
+shield_bar = true
+
+[node name="BoostBar" parent="PlayerFour" unique_id=764947780 instance=ExtResource("3_cxv17")]
+offset_left = -117.99997
+offset_top = 39.000008
+offset_right = 60.00003
+offset_bottom = 217.0
+scale = Vector2(0.74731106, 0.17729197)
+value = 100.0
+texture_progress = ExtResource("4_7s5hy")
+boost_bar = true

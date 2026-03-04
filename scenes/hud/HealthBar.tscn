@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cwhlk0xlxns7v"]
+
+[node name="HealthBar" type="TextureProgressBar" unique_id=734722787]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5012162, 0.5012162)

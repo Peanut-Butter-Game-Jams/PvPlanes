@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bthh1i3bhdmxm"]
+
+[node name="Entity" type="CharacterBody2D" unique_id=1458546997]
+z_index = 10
+z_as_relative = false

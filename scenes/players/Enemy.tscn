@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://1b8nhclltup2"]
+
+[ext_resource type="Script" uid="uid://dhjqdguhmmh4l" path="res://scripts/player/enemy.gd" id="1_ft8do"]
+[ext_resource type="AudioStream" uid="uid://br7jmbyjb5fwp" path="res://sounds/fire_projectile.wav" id="2_5wwv6"]
+[ext_resource type="Texture2D" uid="uid://dl1rhpxs2d12m" path="res://sprites/players/plane_3_red.png" id="3_1vja8"]
+[ext_resource type="Texture2D" uid="uid://bn88nsa05bc8u" path="res://sprites/players/Thrust.png" id="4_iwav8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
+size = Vector2(33, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e80uo"]
+atlas = ExtResource("4_iwav8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxr5p"]
+atlas = ExtResource("4_iwav8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epg4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e80uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxr5p")
+}],
+"loop": true,
+"name": &"forward",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_5uy6h"]
+points = PackedVector2Array(0, 0, -10, 3, -10, -3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1221521408]
+scale = Vector2(1.254, 1.254)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_ft8do")
+turn_speed = 3.0
+evasion_time = 1
+fire_sound = ExtResource("2_5wwv6")
+
+[node name="SpriteBoundingBox" type="CollisionShape2D" parent="." unique_id=853904326]
+position = Vector2(-11.5, 0)
+shape = SubResource("RectangleShape2D_iifgy")
+
+[node name="BodySprite" type="Sprite2D" parent="SpriteBoundingBox" unique_id=938452348]
+position = Vector2(11.5, 0)
+rotation = 1.5708
+scale = Vector2(0.24088664, 0.24088664)
+texture = ExtResource("3_1vja8")
+
+[node name="LeftThrusterSprite" type="AnimatedSprite2D" parent="SpriteBoundingBox" unique_id=2117953318]
+position = Vector2(-28, -13.5)
+rotation = 1.5708
+scale = Vector2(0.59778214, 0.59778214)
+sprite_frames = SubResource("SpriteFrames_epg4t")
+animation = &"forward"
+
+[node name="LeftThrusterSprite2" type="AnimatedSprite2D" parent="SpriteBoundingBox" unique_id=1605329721]
+position = Vector2(-26.5, -7.5)
+rotation = 1.5708
+scale = Vector2(0.59778214, 0.59778214)
+sprite_frames = SubResource("SpriteFrames_epg4t")
+animation = &"forward"
+
+[node name="LeftThrusterSprite3" type="AnimatedSprite2D" parent="SpriteBoundingBox" unique_id=1886757]
+position = Vector2(-26.5, 6.999998)
+rotation = 1.5708
+scale = Vector2(0.59778214, 0.59778214)
+sprite_frames = SubResource("SpriteFrames_epg4t")
+animation = &"forward"
+
+[node name="LeftThrusterSprite4" type="AnimatedSprite2D" parent="SpriteBoundingBox" unique_id=1782476120]
+position = Vector2(-27.5, 13.499998)
+rotation = 1.5708
+scale = Vector2(0.59778214, 0.59778214)
+sprite_frames = SubResource("SpriteFrames_epg4t")
+animation = &"forward"
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1294111436]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1469816840]
+z_index = 10
+shape = SubResource("ConvexPolygonShape2D_5uy6h")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1563022492]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=604178767]
+position = Vector2(7.6293945e-06, 0.7974479)
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_5uy6h")
+
+[node name="NodeTimer" type="Timer" parent="." unique_id=40745336]
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

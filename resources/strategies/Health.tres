@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="HealthUpgradeStrategy" format=3 uid="uid://p47i5lcvfb6i"]
 
-[ext_resource type="Script" uid="uid://bape0gbqwrffh" path="res://scripts/UpgradesStrategies/HealthUpgradeStrategy.gd" id="1_cnkks"]
-[ext_resource type="Texture2D" uid="uid://dx3m5phgkga52" path="res://imgs/HealthUpgrade.png" id="2_op7q2"]
+[ext_resource type="Script" uid="uid://ce6wnx3s8fl2n" path="res://scripts/upgrades/HealthUpgradeStrategy.gd" id="1_cnkks"]
+[ext_resource type="Texture2D" uid="uid://bckjg7cvei3y4" path="res://sprites/upgrades/HealthUpgrade.png" id="2_op7q2"]
 
 [resource]
 script = ExtResource("1_cnkks")
