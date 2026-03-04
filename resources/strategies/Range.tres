@@ -5,7 +5,6 @@
 
 [resource]
 script = ExtResource("1_c6cuu")
-range_increase = 0.1
 texture = ExtResource("2_kvy1c")
-upgrade_text = "Range"
+upgrade_text = "Bullet Speed"
 metadata/_custom_type_script = "uid://bkxsminoxd8la"

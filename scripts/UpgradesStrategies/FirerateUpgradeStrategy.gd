@@ -1,7 +1,7 @@
 class_name FirerateUpgradeStrategy
 extends BaseUpgradeStrategy
 
-@export var fire_rate_modifier := 2
+@export var fire_rate_modifier : float = 1.1
 
 func _ready() -> void:
 	isPlayerUpgrade = true;

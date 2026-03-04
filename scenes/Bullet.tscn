@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qfxptdf5pkh0"]
 
-[ext_resource type="Script" uid="uid://bgr6e33qf1g5e" path="res://scripts/bullet.gd" id="1_p1sfj"]
+[ext_resource type="Script" uid="uid://bgr6e33qf1g5e" path="res://scripts/Bullet.gd" id="1_p1sfj"]
 [ext_resource type="Texture2D" uid="uid://clqiju2iav211" path="res://imgs/Bullet.png" id="2_p1sfj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kdm4f"]
@@ -11,10 +11,8 @@ texture_filter = 1
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_p1sfj")
-speed = 1000.0
-damage = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=481237182]
+[node name="BulletSprite" type="Sprite2D" parent="." unique_id=481237182]
 position = Vector2(19.000002, 4)
 rotation = 1.5708
 scale = Vector2(0.13456196, 0.17689055)

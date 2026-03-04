@@ -1,4 +1,6 @@
 extends Node2D
+@export var pve : bool = true
+
 @onready var start_menu = preload("res://scenes/StartMenu.tscn")
 @onready var player_menu = preload("res://scenes/PlayerMenu.tscn")
 @onready var game_scene = preload("res://scenes/GameScene.tscn")
@@ -38,6 +40,8 @@ func set_players(new_players: Array):
 func start_game():
 	await get_tree().create_timer(1).timeout
 	spawn_players()
+	if pve:
+		spawn_enemy()
 	load_game_scene()
 
 func on_scene_ready():
@@ -83,7 +87,7 @@ func spawn_enemy() -> void:
 	var new_enemy = enemy_scene.instantiate()
 	var random_pos = Vector2(randi_range(0,800),randi_range(0,800))
 	var random_rot = randi_range(0,359)
-	#new_enemy.global_rotation = random_rot
+	new_enemy.global_rotation = random_rot
 	new_enemy.global_position = random_pos
 	add_child(new_enemy)
 

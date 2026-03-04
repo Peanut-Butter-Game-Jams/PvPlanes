@@ -37,7 +37,6 @@ scale = Vector2(1.2539189, 1.2539189)
 collision_mask = 0
 script = ExtResource("1_3li8b")
 fire_sound = ExtResource("2_mdl7e")
-max_velocity = 300.0
 
 [node name="Collider" type="CollisionPolygon2D" parent="." unique_id=440151367]
 top_level = true

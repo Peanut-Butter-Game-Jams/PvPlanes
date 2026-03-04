@@ -7,9 +7,10 @@
 extends Area2D
 class_name Bullet
 
-@export var speed: float = 10.0 # pixels/sec
-@export var max_lifetime: float = 1 #seconds
+@export var speed: float = 1000.0 # pixels/sec
+@export var max_lifetime: float = 10
 @export var damage: int = 1
+@onready var collider: CollisionShape2D = $Collider
 
 var _velocity: Vector2 = Vector2.ZERO
 var _lifetime: float = 0.0
@@ -31,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	if _velocity == Vector2.ZERO:
 		return
 	
-	# TODO: Account for tunneling.
+	handle_screen_wrap()
 	
 	position += _velocity * delta
 	
@@ -44,10 +45,6 @@ func _on_body_entered(body: Node) -> void:
 	_apply_hit(body, global_position)
 
 func _apply_hit(body: Node, new_position: Vector2) -> void:
-	# Don't hit yourself.
-	if body.get_instance_id() == _shooter_id:
-		return
-	
 	if body is CharacterBody2D:
 		body.apply_damage(damage) 
 	
@@ -57,6 +54,18 @@ func _apply_hit(body: Node, new_position: Vector2) -> void:
 func _run_hit_effects(new_position: Vector2) -> void:
 	queue_free()
 
-
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
 	queue_free()
+
+func handle_screen_wrap() -> void:
+	var screen_size = get_viewport().get_visible_rect().size
+
+	if position.x>= screen_size.x:
+		position.x = 0
+	elif position.x <= 0:
+		position.x = screen_size.x
+	
+	if position.y >= screen_size.y:
+		position.y = 0
+	elif position.y <= 0:
+		position.y = screen_size.y
