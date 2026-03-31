@@ -1,6 +1,5 @@
 extends Node2D
 
-const GAME_SCENE = preload("res://scenes/GameScene.tscn")
 var players : Array = []
 
 # Function to prepare the next scene before changing to it

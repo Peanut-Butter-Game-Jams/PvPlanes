@@ -9,7 +9,10 @@ var selected_button: TextureButton
 func _ready() -> void:
 	animation_player.play("pulsate")
 	selected_button = start_button
-	
+	var connected_joypads = Input.get_connected_joypads()
+	for i in range(0,connected_joypads.size()):
+		connected_joypads[i] = (i+1)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("controller_one_down") or Input.is_action_just_pressed("controller_one_up"):

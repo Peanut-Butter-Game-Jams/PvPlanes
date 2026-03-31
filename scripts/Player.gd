@@ -106,8 +106,13 @@ func get_keycode(event: InputEvent) -> int:
 	return -1
 
 func _input(event):
+	var event_device_id = event.device
+	# Fix mismatch for controller id when using keyboard
+	if event is not InputEventKey:
+		event_device_id = event.device + 1
+		
 	# Check only if the event is from the device we want
-	if event.device == device_id:
+	if event_device_id == device_id:
 		if event is InputEventKey or event is InputEventJoypadButton:
 			for action in action_states.keys():
 				var found: bool = false
@@ -223,3 +228,6 @@ func handle_screen_wrap() -> void:
 		position.y = 0
 	elif position.y <= -sprite_bounding_box.y:
 		position.y = screen_size.y
+
+func set_device_id(new_device_id : int):
+	device_id = new_device_id
